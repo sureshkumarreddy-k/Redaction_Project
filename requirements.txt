@@ -1,5 +1,9 @@
 fastapi
 uvicorn
-pytest
 requests
-httpx
+pytest
+pytest-html
+sqlalchemy
+jinja2
+aiofiles
+playwright

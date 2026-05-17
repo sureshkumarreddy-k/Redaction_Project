@@ -57,8 +57,8 @@ def test_empty_message():
         "message": ""
     })
 
-    assert response.status_code == 200
-    assert response.json()["redacted"] == ""
+    assert response.status_code == 400
+    assert response.json()["detail"] == "Message cannot be empty"
 
 
 # 6. Invalid mobile (should NOT mask)

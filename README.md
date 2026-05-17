@@ -1,13 +1,10 @@
-**Redaction API**
+**Redaction Project**
 
-A FastAPI-based REST API that redacts sensitive information like emails and mobile numbers from text input.
+A FastAPI-based web application that detects and redacts sensitive information such as email addresses and mobile numbers.
 
+The application stores redacted messages in a SQLite database and provides a simple web UI to manage messages.
 
-**Overview**
-
-This service accepts a text message and returns a redacted version by masking sensitive data.
-It is designed to demonstrate API development, data masking techniques, and automated testing.
-
+UI automation testing is implemented using Playwright and Pytest.
 
 **Features**
 
@@ -17,12 +14,38 @@ Example: abc@gmail.com → ***@gmail.com
 Mobile number masking (partial masking)
 Example: 9876543210 → 98******10
 
-Handles invalid inputs gracefully
+- SQLite database integration
+- FastAPI backend
+- HTML + CSS frontend
+- Jinja2 templating
+- Store messages in database
+- Delete messages from UI
+- REST API endpoints
+- Playwright UI automation
+- Data-driven testing using Excel
 
-Automated API testing using pytest
+**Project Structure**
 
-Interactive API documentation using Swagger UI
-
+RedactionProject/
+│
+├── main.py
+├── database.py
+├── models.py
+├── client.py
+├── messages.db
+├── requirements.txt
+├── README.md
+│
+├── templates/
+│   └── index.html
+│
+├── static/
+│   └── style.css
+│
+├── tests_ui/
+│   └── test_ui.py
+│
+└── testdata.xlsx
 
 **Running the Application**
 
@@ -81,20 +104,33 @@ POST /redact
 }
 
 
+**API Endpoints**
+
+* Get Home Page: GET /
+  Displays stored redacted messages.
+
+* Submit Message: POST /submit
+  Stores redacted message in database.
+
+* Get Messages: GET /messages
+  Returns all stored messages.
+
+* Delete Message: POST /delete/{message_id}
+  Deletes message from database.
+
 **Running Tests**
 
-Run all automated test cases: pytest -v
-
-Expected output: 11 passed
-
+Run all automated test cases: pytest tests_ui/test_ui.py -v
 
 **Test Coverage**
 
 The test suite includes:
-* Valid email masking
-* Valid mobile number masking
-* Combined scenarios (email + mobile)
-* Invalid inputs (incorrect email, short numbers)
-* Edge cases (empty input, special characters)
-* Multiple sensitive values in a single message
 
+* UI page load validation
+* Email redaction validation
+* Mobile redaction validation
+* Multiple email validation
+* Multiple mobile validation
+* Email + mobile combination validation
+* Delete message validation
+* Data-driven testing using Excel

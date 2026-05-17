@@ -19,3 +19,4 @@ while True:
         print("Redacted Output:", response.json()["redacted"])
     else:
         print("Error:", response.status_code)
+        print("Message:", response.json()["detail"])
