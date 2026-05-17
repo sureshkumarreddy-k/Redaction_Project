@@ -25,7 +25,7 @@ Example: 9876543210 → 98******10
 - Data-driven testing using Excel
 
 **Project Structure**
-
+```text
 RedactionProject/
 │
 ├── main.py
